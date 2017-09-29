@@ -31,8 +31,7 @@
 
       (binding [boot.util/*sh-dir* (str (io/file tmp (format "incremental-dom-%s" +lib-version+)))]
         ((sh "npm" "install"))
-        ((sh "patch" "gulpfile.js" "../gulpfile.js.patch" "-o" "patched-gulpfile.js"))
-        ((sh "./node_modules/.bin/gulp" "--gulpfile=patched-gulpfile.js" "js-closure")))
+        ((sh "./node_modules/.bin/gulp" "--gulpfile=gulpfile.js" "js-closure")))
       (-> fileset (boot/add-resource tmp) boot/commit!))))
 
 
